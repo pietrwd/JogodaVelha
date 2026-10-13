@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jogo da Velha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="title">Jogo da Velha</h1>
+
+    <!-- Tela 1: nomes dos jogadores -->
+    <section class="screen" id="screen-setup">
+      <form class="card" id="setup" novalidate>
+        <label class="field x">
+          <span>Jogador 1 (X)</span>
+          <input id="name-x" maxlength="12" placeholder="Nome do jogador 1" autocomplete="off">
+        </label>
+        <label class="field o">
+          <span>Jogador 2 (O)</span>
+          <input id="name-o" maxlength="12" placeholder="Nome do jogador 2" autocomplete="off">
+        </label>
+        <p class="error" id="error" role="alert"></p>
+        <p class="hint">Serão 5 rodadas. Vence quem ganhar mais rodadas. Quem começa alterna a cada rodada.</p>
+        <button class="btn primary" type="submit">Iniciar jogo</button>
+      </form>
+    </section>
+
+    <!-- Tela 2: partida -->
+    <section class="screen" id="screen-game" hidden>
+      <div class="round-bar">
+        <strong id="round-label">Rodada 1 de 5</strong>
+        <div class="dots" id="dots" aria-hidden="true"></div>
+      </div>
+
+      <div class="scores">
+        <div class="score x" id="score-x"><span id="pname-x"></span><strong id="px">0</strong></div>
+        <div class="score o" id="score-o"><span id="pname-o"></span><strong id="po">0</strong></div>
+      </div>
+
+      <p class="status" id="status" aria-live="polite"></p>
+      <div class="board" id="board" role="group" aria-label="Tabuleiro"></div>
+      <button class="btn primary" id="next" hidden>Próxima rodada</button>
+    </section>
+
+    <!-- Tela 3: resultado final -->
+    <section class="screen" id="screen-final" hidden>
+      <p class="verdict" id="verdict"></p>
+
+      <div class="scores">
+        <div class="score x"><span id="fname-x"></span><strong id="fx">0</strong><small>vitórias</small></div>
+        <div class="score o"><span id="fname-o"></span><strong id="fo">0</strong><small>vitórias</small></div>
+      </div>
+
+      <ol class="rounds" id="rounds-list"></ol>
+      <p class="hint" id="draws"></p>
+
+      <div class="actions">
+        <button class="btn primary" id="again">Jogar de novo</button>
+        <button class="btn ghost" id="change">Trocar jogadores</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
